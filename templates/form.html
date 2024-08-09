@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stress Level Prediction</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        background-color: #efefef;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+      }
+      .container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+      form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 2vh;
+      }
+      .heading {
+        font-family: serif;
+        font-size: 45px;
+      }
+      .inputs {
+        display: flex;
+        gap: 1vw;
+      }
+      .inputs input {
+        padding: 10px 20px;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+      button {
+        background-color: darkgray;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: black;
+        transition: 0.5s;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="container">
+        <h1 class="heading">Predict Stress Level</h1>
+      <form action="/predict" method="POST">
+        <div class="inputs">
+          <input
+            placeholder="Humidity"
+            type="number"
+            step="any"
+            id="humidity"
+            name="humidity"
+            required
+          /><br /><br />
+          <input
+            placeholder="Temperature"
+            type="number"
+            step="any"
+            id="temperature"
+            name="temperature"
+            required
+          /><br /><br />
+          <input
+            placeholder="Step Count"
+            type="number"
+            id="step_count"
+            name="step_count"
+            required
+          /><br /><br />
+        </div>
+
+        <button class="submit" type="submit" value="Predict">Analyze</button>
+      </form>
+      <h1>{{ prediction_text }}</h1>
+    </div>
+  </body>
+</html>
